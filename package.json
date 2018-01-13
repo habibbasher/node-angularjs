@@ -1,0 +1,52 @@
+{
+  "name": "angularjs",
+  "version": "1.0.0",
+  "description": "This is a starter application developed using nodejs and angular js.",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node -- server.js",
+    "test": "test",
+    "lint": "eslint node-angularjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/habibbasher/node-angularjs.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "angularjs",
+    "mongodb"
+  ],
+  "author": "Md. Habib-ul-basher",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/habibbasher/node-angularjs/issues"
+  },
+  "homepage": "https://github.com/habibbasher/node-angularjs#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "bcrypt": "^1.0.3",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.13.9",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.1.2",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-prettier": "^2.4.0",
+    "eslint-plugin-react": "^7.5.1",
+    "nodemon": "^1.14.9",
+    "prettier": "^1.9.2"
+  }
+}
