@@ -31,14 +31,20 @@ const PORT = 8080;
 dotenv.config();
 
 /**
+* Using morgan middleware for log 
+*/
+app.use(morgan('dev'));
+
+/**
 * Using body-parser for parsing data coming from UI
 */
 app.use(bodyParser.json());
 
 /**
-* Using morgan middleware for log 
-*/
-app.use(morgan('dev'));
+* Connecting public directory for static files
+*/ 
+app.use(express.static(path.join(__dirname, '/public')));
+
 
 /**
 * Connecting MongoDB using mongoose
@@ -52,8 +58,7 @@ mongoose.connect(process.env.MONGODB_URL, { useMongoClient: true })
   console.log(`Failed to connect MongoDB ${err}`);
 });
 
-// When angular project is build to client directory then use following commented line
-// app.use(express.static(path.join(__dirname, 'client')));
+
 
 /**
 * Using custom routes
@@ -64,10 +69,10 @@ app.use("/api/users", users);
 /**
 * Catching all other routes which is not defined
 */
-app.get('/*', (req, res) => {
-  // When angular project is build to client directory then use following commented line
-  // res.sendFile(path.join(__dirname, 'client/index.html'));
-  res.sendFile(path.join(__dirname, './index.html'));
+app.get('*', (req, res) => {
+  // Setting a default view for users
+  res.sendFile(path.join(__dirname, '/public/views/index.html'));
+  // res.sendFile(path.join(__dirname, './index.html'));
 });
 
 /**
