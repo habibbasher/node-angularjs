@@ -24,7 +24,8 @@
       "import/prefer-default-export": "off",
       "func-names": "off",
       "no-else-return": "off",
-      "no-useless-escape": "off" 
+      "no-useless-escape": "off" ,
+      "no-undef": "off"
     }
 }
     
