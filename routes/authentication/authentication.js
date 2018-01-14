@@ -2,6 +2,9 @@
 * Importing node modules
 */
 import express from 'express';
+
+import lodash from 'lodash';
+
 /**
 * Importing custom modules
 */
@@ -52,6 +55,26 @@ router.post("/register", (req, res) => {
         });
 
   }
+
+});
+
+router.post("/login", (req, res) => {
+
+  const credentials  = req.body;
+
+  if(credentials.username && credentials.password) {
+    User.findOne({ username: credentials.username })
+    .then((user) => {
+        if (!lodash.isEmpty(user) && user.isValidPassword(credentials.password)) {
+          res.status(200).json({success: true, email: user.email, username: user.username, message: "User authenticated"});
+        } else {
+          res.status(400).json({ success: false, errors: "Invalid credentials" });
+        }
+    });
+  } else {
+    res.status(400).json({ success: false, message: "Please provide both username and password" });
+  }
+  
 
 });
 

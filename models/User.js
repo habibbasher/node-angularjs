@@ -154,7 +154,9 @@ userSchema.pre('save', function (next) {
 
 // Methods to compare password to encrypted password upon login
 // Return comparison of login password to password in database (true or false)
-userSchema.methods.comparePassword = password => bcrypt.compareSync(password, this.password);
+userSchema.methods.isValidPassword = function isValidPassword(password) {
+  return bcrypt.compareSync(password, this.password);
+};
 
 // Generating json object
 userSchema.methods.toAuthJSON = function toAuthJSON() {
