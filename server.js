@@ -23,7 +23,7 @@ mongoose.Promise = Promise;
 * Initializing some const
 */
 const app = express();
-const PORT = 8080;
+const PORT = 8081;
 
 /**
 * Configuring dotenv. It allows to get constant data from .env file

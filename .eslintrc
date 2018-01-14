@@ -25,7 +25,8 @@
       "func-names": "off",
       "no-else-return": "off",
       "no-useless-escape": "off" ,
-      "no-undef": "off"
+      "no-undef": "off",
+      "prefer-arrow-callback": "off"
     }
 }
     
