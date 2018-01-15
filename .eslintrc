@@ -26,7 +26,8 @@
       "no-else-return": "off",
       "no-useless-escape": "off" ,
       "no-undef": "off",
-      "prefer-arrow-callback": "off"
+      "prefer-arrow-callback": "off",
+      "no-unused-vars": "off"
     }
 }
     

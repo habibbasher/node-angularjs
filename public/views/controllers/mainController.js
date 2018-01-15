@@ -2,13 +2,19 @@ angular.module("mainController", ["authService"])
 
     .controller("mainCtrl", function(Auth, $location, $timeout) {
 
-        let app = this;
+        const app = this;
 
-        this.doLogin = function(loginData){
+        if(Auth.isLoggedIn()){
+            console.log("Success: User loggedIn");        
+        } else {
+            console.log("Failure: User NOT loggedIn");
+        }
+
+        this.doLogin = loginData => {
 
             app.errorMsg = false;
 
-            Auth.login(app.loginData).then((response) => {
+            Auth.login(app.loginData).then(response => {
                 if(response.data.success) {
                     app.successMsg = `${response.data.message} ...Redirecting`;
                     $timeout(() => {
@@ -21,6 +27,14 @@ angular.module("mainController", ["authService"])
             .catch((err) => {
                 app.errorMsg = err.data.message;
             });
+        };
+
+        this.logout = () => {
+            Auth.logout();
+            $location.path("/logout");
+            $timeout(() => {
+                $location.path("/");
+            }, 2000);
         };
 
     });

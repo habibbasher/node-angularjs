@@ -1,13 +1,13 @@
 angular.module("userController", ["userService"])
     .controller("regCtrl", function($location, $timeout, User) {
 
-        let app = this;
+        const app = this;
 
-        this.registerUser = function(regData){
+        this.registerUser = regData => {
 
             app.errorMsg = false;
 
-            User.create(app.regData).then((response) => {
+            User.create(app.regData).then(response => {
                 if(response.data.success) {
                     app.successMsg = `${response.data.message} ...Redirecting`;
                     $timeout(() => {
@@ -17,7 +17,7 @@ angular.module("userController", ["userService"])
                     app.errorMsg = response.data.message;
                 }
             })
-            .catch((err) => {
+            .catch(err => {
                 app.errorMsg = err.data.message;
             });
         };

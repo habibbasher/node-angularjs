@@ -66,7 +66,8 @@ router.post("/login", (req, res) => {
     User.findOne({ username: credentials.username })
     .then((user) => {
         if (!lodash.isEmpty(user) && user.isValidPassword(credentials.password)) {
-          res.status(200).json({success: true, email: user.email, username: user.username, message: "User authenticated"});
+          const { username, email, token } =  user.toAuthJSON();        
+          res.status(200).json({success: true, message: "User authenticated", userName: username, Token: token});
         } else {
           res.status(400).json({ success: false, errors: "Invalid credentials" });
         }

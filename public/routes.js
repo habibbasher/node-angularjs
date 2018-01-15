@@ -16,6 +16,9 @@ angular.module("appRoutes", ["ngRoute"])
             controller: "mainCtrl",
             controllerAs: "main"
        })
+       .when("/logout", {
+           templateUrl: "views/pages/users/logout.html"
+       })
        .otherwise({ redirectTo: "/" });
 
        $locationProvider.html5Mode({

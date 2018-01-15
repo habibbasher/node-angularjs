@@ -162,6 +162,7 @@ userSchema.methods.isValidPassword = function isValidPassword(password) {
 userSchema.methods.toAuthJSON = function toAuthJSON() {
   return {
     email: this.email,
+    username: this.username,
     token: this.generateJWT()
   };
 };
@@ -170,7 +171,8 @@ userSchema.methods.toAuthJSON = function toAuthJSON() {
 userSchema.methods.generateJWT = function generateJWT() {
   return jwt.sign(
     {
-      email: this.email
+      email: this.email,
+      username: this.username
     },
     process.env.JWT_SECRET,
     {
